@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class WeatherController {
 
     private static final String API_BASE_URL = "http://dataservice.accuweather.com";
