@@ -25,6 +25,11 @@ const router = new Router({
             path: "/contact",
             name: "contact",
             component: Contact
+        },
+        {
+            path: "/search",
+            name: "search",
+            component: Search
         }
     ]
 })

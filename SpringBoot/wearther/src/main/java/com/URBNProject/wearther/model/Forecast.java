@@ -3,8 +3,8 @@ package com.URBNProject.wearther.model;
 public class Forecast {
 
     private String weatherText;
-    private String temperatureF;
     private String temperatureC;
+    private String temperatureF;
     private boolean hasPrecipitation;
     private String link;
 
