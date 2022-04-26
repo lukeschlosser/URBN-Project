@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Search from '../views/Search.vue'
-import Weather from '../views/Weather.vue'
-import Contact from '../views/Contact.vue'
+import HomePage from '../views/HomePage.vue'
+import WeatherDisplay from '../views/WeatherDisplay.vue'
+import ContactUs from '../views/ContactUs.vue'
 
 Vue.use(Router)
+
+/* May potential add authentification in the future */
 
 const router = new Router({
     mode: "history",
@@ -14,22 +15,19 @@ const router = new Router({
         {
             path: "/",
             name: "home",
-            component: Home
+            component: HomePage
         },
         {
             path: "/weather",
             name: "weather",
-            component: Weather
+            component: WeatherDisplay
         },
         {
             path: "/contact",
             name: "contact",
-            component: Contact
-        },
-        {
-            path: "/search",
-            name: "search",
-            component: Search
+            component: ContactUs
         }
     ]
 })
+
+export default router;
