@@ -11,6 +11,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,29 +20,25 @@ import java.util.List;
 @Component
 public class WeatherService {
 
-    private RestTemplate restTemplate = new RestTemplate();
-
-    private String API_BASE_URL = "http://dataservice.accuweather.com";
+    private static final String API_BASE_URL = "http://dataservice.accuweather.com";
+    private static final String API_KEY = "?apikey=ycWGVPxLK73Vg9GhLGeLQnjHaRxX5vBX";
     private String searchByPostal = "/locations/v1/postalcodes/search?apikey=ycWGVPxLK73Vg9GhLGeLQnjHaRxX5vBX&q=";
     private String searchByKey = "/currentconditions/v1/";
-    private String API_KEY = "?apikey=ycWGVPxLK73Vg9GhLGeLQnjHaRxX5vBX";
+    private RestTemplate restTemplate = new RestTemplate();
 
     // FULL GET URL for current conditions http://dataservice.accuweather.com/currentconditions/v1/{key goes here}?apikey=ycWGVPxLK73Vg9GhLGeLQnjHaRxX5vBX
 
     public WeatherService(){}
 
-    public WeatherService(String API_BASE_URL){
-        this.API_BASE_URL = API_BASE_URL;
-    }
-
     private HttpEntity<Void> makeHeaders(){
         HttpHeaders headers = new HttpHeaders();
         return new HttpEntity<>(headers);
     }
-
-    public List<Forecast> getWeatherByPostalCode(String postalCode) {
-        List<Forecast> forecastList = new ArrayList<>();
+    //Main method for getting forecast details from a given postal code
+    public Forecast getWeatherByPostalCode(String postalCode) {
+        Forecast forecast = new Forecast();
         String key = fetchKeyFromPostalCode(postalCode);
+        key = key.replace("\"","");
         String forecastJsonString = null;
 
         try {
@@ -54,11 +52,17 @@ public class WeatherService {
             System.out.println(e.getMessage());
         }
 
-        return forecastJsonString(forecastJsonString, forecastList);
+        List<String> forecastJson = extractWeatherInformation(forecastJsonString);
+        forecast.setWeatherText(forecastJson.get(0));
+        forecast.setTemperatureC(forecastJson.get(1));
+        forecast.setTemperatureF(forecastJson.get(2));
+        forecast.setHasPrecipitation(forecastJson.get(3).equalsIgnoreCase("true"));
+        forecast.setLink(forecastJson.get(4));
+
+        return forecast;
     }
 
     //retrieve a key from given valid postal code
-    //TODO test in postman once controller setup
     public String fetchKeyFromPostalCode(String postalCode){
         String jsonString = null;
         String key = "";
@@ -78,70 +82,49 @@ public class WeatherService {
 
         return key;
     }
-
+    //further fetching of the key -- Broken into a separate method in case future versions need different search params
     public String fetchKeyFromJsonString(String key, String jsonString, Integer offset) {
         int indexOfKey = jsonString.indexOf(key);
         int beginIndexOfValue = indexOfKey + key.length() + offset;
         String[] split = jsonString.substring(beginIndexOfValue).split(",");
-        String isolatedKey = split[1];
+        String isolatedKey = split[0];
         return isolatedKey;
     }
-
-    public String fetchForecastDetails(String pathKey, String forecastJsonString, Integer offset){
-
-        int indexOfPathKey = forecastJsonString.indexOf(pathKey);
-        int indexStart = indexOfPathKey + pathKey.length() + offset;
-
-        String[] split = forecastJsonString.substring(indexStart).split("\"");
-        String isolatedPath = split[0];
-
-        return isolatedPath;
-    }
-
+    //extracting the pertinent information from the API call
     public List<String> extractWeatherInformation(String forecastJsonString){
 
         List<String> listOfForecastInfo = new ArrayList<>();
 
-        String key = fetchKeyFromJsonString("\"Key\"", forecastJsonString, 1);
-        listOfForecastInfo.add(key);
-
-        String weatherText = fetchForecastDetails("\"WeatherText\"", forecastJsonString, 1);
+        String weatherText = fetchForecastDetails("WeatherText", forecastJsonString, 3);
+        weatherText = StringUtils.chop(weatherText);
         listOfForecastInfo.add(weatherText);
 
         String temperatureC = fetchForecastDetails("\"Value\"", forecastJsonString, 1);
         listOfForecastInfo.add(temperatureC);
         //TODO figure out if going to convert or grab the second "Value"
-        String temperatureF = fetchForecastDetails("\"Value\"", forecastJsonString, 1);
+        String temperatureF = fetchForecastDetails("\"Imperial\":{\"Value\"", forecastJsonString, 1);
         listOfForecastInfo.add(temperatureF);
 
         String hasPrecipitation = fetchForecastDetails("\"HasPrecipitation\"", forecastJsonString, 1);
         listOfForecastInfo.add(hasPrecipitation);
 
         String link = fetchForecastDetails("\"Link\"", forecastJsonString, 1);
+        link = StringUtils.chop(link);
+        link = StringUtils.chop(link);
+        link = link.replace("\"","");
         listOfForecastInfo.add(link);
 
         return listOfForecastInfo;
     }
+    //extracting from the API call further
+    public String fetchForecastDetails(String pathKey, String forecastJsonString, Integer offset){
 
-    public List<Forecast> forecastJsonString(String listForecastJsonString, List<Forecast> listForecast){
+        int indexOfPathKey = forecastJsonString.indexOf(pathKey);
+        int indexStart = indexOfPathKey + pathKey.length() + offset;
 
-        while(listForecastJsonString.contains("\"LocalObservationDateTime\"")){
-            Forecast forecast = new Forecast();
-            List<String> listOfForecast = new ArrayList<>();
+        String[] split = forecastJsonString.substring(indexStart).split(",");
+        String isolatedPath = split[0];
 
-            listOfForecast = extractWeatherInformation(listForecastJsonString);
-
-            forecast.setKey(listOfForecast.get(0));
-            forecast.setWeatherText(listOfForecast.get(1));
-            forecast.setTemperatureC(listOfForecast.get(2));
-            forecast.setTemperatureF(listOfForecast.get(3));
-            forecast.setHasPrecipitation(listOfForecast.get(4).equalsIgnoreCase("true"));
-            forecast.setLink(listOfForecast.get(5));
-
-            listForecast.add(forecast);
-        }
-
-        return listForecast;
+        return isolatedPath;
     }
-
 }

@@ -2,7 +2,6 @@ package com.URBNProject.wearther.model;
 
 public class Forecast {
 
-    private String key;
     private String weatherText;
     private String temperatureF;
     private String temperatureC;
@@ -11,17 +10,12 @@ public class Forecast {
 
     public Forecast(){}
 
-    public Forecast(String key, String weatherText, String temperatureF, String temperatureC, boolean hasPrecipitation, String link) {
-        this.key = key;
+    public Forecast(String weatherText, String temperatureF, String temperatureC, boolean hasPrecipitation, String link) {
         this.weatherText = weatherText;
-        this.temperatureF = temperatureF;
         this.temperatureC = temperatureC;
+        this.temperatureF = temperatureF;
         this.hasPrecipitation = hasPrecipitation;
         this.link = link;
-    }
-
-    public String getKey() {
-        return key;
     }
 
     public String getWeatherText() {
@@ -42,10 +36,6 @@ public class Forecast {
 
     public String getLink() {
         return link;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public void setWeatherText(String weatherText) {
@@ -69,8 +59,7 @@ public class Forecast {
     }
 
     public String toString() {
-        return "Forecast{" + key +
-                "key=" + key +
+        return "Forecast{" +
                 "conditions=" + weatherText +
                 "temperatureF=" + temperatureF +
                 "temperatureC=" + temperatureC +

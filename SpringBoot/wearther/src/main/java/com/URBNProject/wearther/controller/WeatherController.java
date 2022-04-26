@@ -10,18 +10,17 @@ import java.util.List;
 @CrossOrigin
 public class WeatherController {
 
-    String API_BASE_URL = "http://dataservice.accuweather.com";
+    private static final String API_BASE_URL = "http://dataservice.accuweather.com";
 
     private WeatherService weatherService;
 
-    public WeatherController(WeatherService weatherService){
+    public WeatherController(WeatherService weatherService) {
         this.weatherService = weatherService;
     }
-
+    //retrieves 'Current Weather Conditions' for the given postal code
     @RequestMapping(path = "/weather/{postalCode}", method = RequestMethod.GET)
-    public List<Forecast> getWeatherByPostalCode(@PathVariable String postalCode) {
+    public Forecast getWeatherByPostalCode(@PathVariable String postalCode) {
         return weatherService.getWeatherByPostalCode(postalCode);
     }
-
 
 }
