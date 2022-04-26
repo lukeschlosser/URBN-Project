@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        weather:[],
+        forecast:[],
         activeWeather:{
             weatherText:'',
             temperatureC:'',
@@ -20,8 +20,8 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        SET_WEATHER(state, data){
-            state.weather=data;
+        SET_FORECAST(state, data){
+            state.forecast=data;
         },
         SET_WHAT_TO_WEAR(state, data){
             state.whatToWear=data;
