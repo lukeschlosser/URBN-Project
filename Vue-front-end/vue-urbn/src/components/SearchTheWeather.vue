@@ -41,7 +41,6 @@ import WeatherService from '../services/WeatherService'
     methods:{
         searchWeather(){
             WeatherService.getWeatherByPostalCode(this.search).then(response=>{
-                console.log(this.search)
                 this.$store.commite("SET_WEATHER", response.data)
                 console.log(response.data);
             }).catch(function (error) {
