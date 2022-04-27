@@ -2,7 +2,7 @@ package com.URBNProject.wearther.model;
 
 public class Location {
 
-    //Can possibly add more location details in the future for new versions. City/Region/etc.
+    // Can possibly add more location details in the future for new versions. City/Region/etc.
     private int postalCode;
     private String key;
 

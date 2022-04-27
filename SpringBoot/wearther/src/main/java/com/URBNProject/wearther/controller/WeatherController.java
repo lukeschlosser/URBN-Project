@@ -17,7 +17,7 @@ public class WeatherController {
     public WeatherController(WeatherService weatherService) {
         this.weatherService = weatherService;
     }
-    //retrieves 'Current Weather Conditions' for the given postal code
+    // get 'Current Weather Conditions' for the given postal code
     @RequestMapping(path = "/weather/{postalCode}", method = RequestMethod.GET)
     public Forecast getWeatherByPostalCode(@PathVariable String postalCode) {
         return weatherService.getWeatherByPostalCode(postalCode);

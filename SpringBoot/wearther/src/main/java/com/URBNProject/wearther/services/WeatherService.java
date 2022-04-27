@@ -34,7 +34,7 @@ public class WeatherService {
         HttpHeaders headers = new HttpHeaders();
         return new HttpEntity<>(headers);
     }
-    //Main method for getting forecast details from a given postal code
+    // main method for getting forecast details from a given postal code
     public Forecast getWeatherByPostalCode(String postalCode) {
         Forecast forecast = new Forecast();
         String key = fetchKeyFromPostalCode(postalCode);
@@ -62,7 +62,7 @@ public class WeatherService {
         return forecast;
     }
 
-    //retrieve a key from given valid postal code
+    // retrieve a key from given valid postal code
     public String fetchKeyFromPostalCode(String postalCode){
         String jsonString = null;
         String key = "";
@@ -82,7 +82,7 @@ public class WeatherService {
 
         return key;
     }
-    //further fetching of the key -- Broken into a separate method in case future versions need different search params
+    // further fetching of the key -- Broken into a separate method in case future versions need different search params
     public String fetchKeyFromJsonString(String key, String jsonString, Integer offset) {
         int indexOfKey = jsonString.indexOf(key);
         int beginIndexOfValue = indexOfKey + key.length() + offset;
@@ -90,7 +90,7 @@ public class WeatherService {
         String isolatedKey = split[0];
         return isolatedKey;
     }
-    //extracting the pertinent information from the API call
+    // extracting the pertinent information from the API call
     public List<String> extractWeatherInformation(String forecastJsonString){
 
         List<String> listOfForecastInfo = new ArrayList<>();
@@ -101,7 +101,7 @@ public class WeatherService {
 
         String temperatureC = fetchForecastDetails("\"Value\"", forecastJsonString, 1);
         listOfForecastInfo.add(temperatureC);
-        //TODO figure out if going to convert or grab the second "Value"
+
         String temperatureF = fetchForecastDetails("\"Imperial\":{\"Value\"", forecastJsonString, 1);
         listOfForecastInfo.add(temperatureF);
 
@@ -116,7 +116,7 @@ public class WeatherService {
 
         return listOfForecastInfo;
     }
-    //extracting from the API call further
+    // extracting from the API call further
     public String fetchForecastDetails(String pathKey, String forecastJsonString, Integer offset){
 
         int indexOfPathKey = forecastJsonString.indexOf(pathKey);
