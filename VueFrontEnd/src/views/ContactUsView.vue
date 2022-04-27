@@ -20,8 +20,7 @@
             <h4>
                 This Contact form is not functional at this time. Well...more accurately it's 
                 not functional in the way you would expect a contact form to be. I like how three nav items look 
-                for the menu and so here we are with this Contact view. Thanks for spending time in my application. 
-                Looking forward to feedback!
+                for the menu and so here we are with this Contact view. Thanks for spending time in my application.
             </h4>
         </div>
   </div>

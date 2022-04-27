@@ -4,16 +4,16 @@
 
     <div class="search">
         <input class="searchBar" type="text" v-model="search" placeholder="Enter Postal Code"/>    
-        <button class="searchButton" href="#" v-on:click="searchWeather()"><i class="material-icons">search</i></button>
+        <button class="searchButton" href="#" v-on:click="searchWeather"><i class="material-icons">search</i></button>
     </div>    
         
     <div class="weatherContainer" >
             
-            <ul class="weatherList" v-if="$store.state.forecast" >
+            <div class="weatherList" v-if="$store.state.forecast" >
                 
-                <li> {{ this.forecastWeatherText }} </li>
+                <p>{{ this.forecastWeatherText }}</p>
                 
-                <li> {{ this.forecastTemperatureF }}&#176;</li>
+                <p v-if="this.forecastTemperatureF">{{ this.forecastTemperatureF + '&#176;F' }}</p>
                 
                 <!-- <li> {{ this.forecastLink}} </li>   -->
                 
@@ -22,7 +22,7 @@
                 <!-- <li> {{ this.forecastHasPrecipitation }} </li> -->
 
                 
-            </ul>
+            </div>
         
     </div>
     
@@ -67,7 +67,7 @@ import WeatherService from '@/services/WeatherService'
     },
     computed: {
         forecastTemperatureF(){
-            return this.$store.state.forecast.temperatureF;
+            return (this.$store.state.forecast.temperatureF);
         },
         forecastTemperatureC(){
             return this.$store.state.forecast.temperatureC;
@@ -94,14 +94,14 @@ import WeatherService from '@/services/WeatherService'
 
 <style>
 
-div#searchPage{
+/* div#searchPage{
     display: grid;
     grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
     grid-template-rows: auto, 1fr, 50px;
     grid-template-areas: 
         "search search search search search"
         "tableDiv" "tableDiv" "tableDiv" "tableDiv" "tableDiv";
-}
+} */
 
 .search {
     position: absolute;
@@ -151,21 +151,23 @@ div#searchPage{
     width: 0px;
 }
 
-.weatherContainer{
+/* .weatherContainer{
     display: grid;
-    margin-bottom:170%;   
-}
+    margin-bottom:40%;   
+} */
 
 .weatherList{
-    list-style: none;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: auto;
+    margin-left: 10%;
+    /* list-style: none;
     padding: none;
-    margin: none;
+    margin: none; */
     font-size: 175%;
     
 }
-.li{
-    float: left;
-}
+
 
 
 
@@ -176,16 +178,18 @@ div#searchPage{
     "search"
     "tableDiv";
     grid-template-columns: 1fr;
-    overflow: scroll;
+    
   }
-  div#tableDiv{
+
+  #weatherContainer{
   grid-area: auto;
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  height: 60vh;
+  height: 60vh;  
 }
+
 }
 
 @media screen and (max-width: 620px) {
@@ -193,6 +197,7 @@ div#searchPage{
     width: 150px;
     padding: 0 6px;
 }
+
 }
 
 </style>

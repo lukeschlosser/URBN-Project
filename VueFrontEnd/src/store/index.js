@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.forecast=data;
     },
     // SET_WHAT_TO_WEAR(state, data){
-    //   state.whatToWear=data;
+    //   state=data;
     // }
   },
   actions: {},
