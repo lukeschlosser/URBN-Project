@@ -4,28 +4,28 @@
 
     <div class="search">
         <input class="searchBar" type="text" v-model="search" placeholder="Enter Postal Code"/>    
-        <button class="searchButton" href="#" v-on:click="searchWeather"><i class="material-icons">search</i></button>
+        <button class="searchButton" href="#" v-on:click="searchWeather()"><i class="material-icons">search</i></button>
     </div>    
-        <div id="tableDiv">
-        <table class="weatherTable">
-            <thead>
-                <th> Conditions </th>
-                <th> Temperature in C </th>
-                <th> Temperature in F </th>
-                <th> Rain? </th>
-                <th> More Details </th>
-            </thead>
-            <tbody>
-                <tr v-for="forecast in forecasts" v-bind:key="forecast">
-                    <td> {{forecast.weatherText}} </td>
-                    <td> {{forecast.temperatureC}} </td>
-                    <td> {{forecast.temperatureF}} </td>
-                    <td> {{forecast.hasPrecipitation}} </td>
-                    <td> {{forecast.link}} </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
+        
+    <div class="weatherList" >
+            <ul class="weathertextList">
+                <li> Conditions </li>
+                <li> Temperature in C </li>
+                <li> Temperature in F </li>
+                <li> Rain? </li>
+                <li> More Details </li>
+            </ul>
+            
+            <ul class="weatherListDetails" v-if="$store.state.forecast" >
+                <li> {{ this.forecastTemperatureF }}</li>
+                <li> {{ this.forecastTemperatureC }} </li>
+                <li> {{ this.forecastWeatherText }} </li>
+                <li> {{ this.forecastHasPrecipitation }} </li>
+                <li> {{ this.forecastLink }} </li>  
+            </ul>
+            
+    </div>
+    
         
         
     
@@ -66,14 +66,23 @@ import WeatherService from '@/services/WeatherService'
         }
     },
     computed: {
-        forecastDetails(){
-            return this.$store.state.activeWeather;
+        forecastTemperatureF(){
+            return this.$store.state.forecast.temperatureF;
+        },
+        forecastTemperatureC(){
+            return this.$store.state.forecast.temperatureC;
+        },
+        forecastWeatherText(){
+            return this.$store.state.forecast.weatherText;
+        },
+        forecastHasPrecipitation(){
+            return this.$store.state.forecast.hasPrecipitation;
+        },
+        forecastLink(){
+            return this.$store.state.forecast.Link;
         }
+        
     },    
-        created() {
-            this.getWeatherByPostalCode()
-        }
-    
 }
 
 </script>
@@ -139,6 +148,7 @@ div#searchPage{
 }
 
 div#tableDiv{
+    display:grid;
     grid-area: auto;   
 }
 
