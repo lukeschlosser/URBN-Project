@@ -2,6 +2,7 @@
   <div class="home">
     <div id="searchComponent">
     <SearchTheWeather/>
+    <WhatToWear/>
     <div id="whatToWearComponent">
     
     </div>
@@ -11,13 +12,13 @@
 
 <script>
 import SearchTheWeather from '@/components/SearchTheWeather.vue'
-
+import WhatToWear from '@/components/WhatToWear.vue'
 
 export default {
   name: 'HomeView',
   components: {
     SearchTheWeather,
-   
+    WhatToWear
   }
 }
 </script>

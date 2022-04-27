@@ -1,43 +1,41 @@
-// Suggestions on what to wear based on the forecast
 <template>
     <div id="WhatToWearPage">
         <div class="whatToWear">
-            <ul class="whatToWearList">
-                <li class="top">URBAN Top Picks {{ topWear }}</li>
-                <li class="bottom">URBAN Bottom Picks {{ bottomWear }}</li>
-            </ul>
+            
+                <p class="top">URBAN Top Picks <a>{{topWear}}</a> </p>
+                
+                <p class="bottom" >URBAN Bottom Picks {{ bottomWear }}</p>
+            
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {}
     },
-    methods:{
+    methods:{},
+    computed:{
         topWear(){
-            if($store.state.temperatureF > 85){
-                return $store.state.veryHotTop;
-                    } else if($store.state.temperatureF > 70){
-                        return $store.state.hotTop;
-                    } else if($store.state.temperatureF > 50){
-                        return $store.state.mildTop;
+            if(this.$store.state.forecast.temperatureF > 85){
+                return this.$store.state.veryHotTop;
+                    } else if(this.$store.state.forecast.temperatureF > 70){
+                        return this.$store.state.hotTop;
+                    } else if(this.$store.state.forecast.temperatureF > 50){
+                        return this.$store.state.mildTop;
                     } else {
-                        return $store.state.coldTop;
+                        return this.$store.state.coldTop;
                     }
         },
         bottomWear(){
-            if($store.state.temperatureF > 80){
-                return $store.state.hotBottom
-            } else { return $store.state.coldBottom; }
+            if(this.$store.state.forecast.temperatureF > 80){
+                return this.$store.state.hotBottom
+            } else { return this.$store.state.coldBottom; }
 
         }
-    },
-    computed:{
-        
     }
 }
-
 
 </script>

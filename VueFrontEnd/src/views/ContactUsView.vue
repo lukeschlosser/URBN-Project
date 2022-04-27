@@ -2,19 +2,27 @@
   <div id="main">
       <div id="contactform">
       <h3>Contact</h3>
-      <form id="ticket" method="POST" action="https://example.com/api/reservation">
+      <form id="ticket" method="GET" action="https://c.tenor.com/voYdvkuMphgAAAAd/it-just-works.gif">
             <div id="email">
-                <label for="e-mail">E-mail:</label>
-                <input id="e-mail" name="e-mail" type="text" />
+                
+                <input id="e-mail" name="e-mail" type="text" placeholder="Email Address" />
             </div>
             <div id="question">
-                <label for="question">What can we help you with?:</label>
-                <input id="question" name="question" type="text-area" />
+                <label for="question">What can we help you with? </label>
+                <input id="question" name="question" type="text-area" placeholder="Don't press 'Submit'" />
             </div>
             <div id="submit">
                 <input type="submit" />
             </div>
         </form>
+        </div>
+        <div>
+            <h4>
+                This Contact form is not functional at this time. Well...more accurately it's 
+                not functional in the way you would expect a contact form to be. I like how three nav items look 
+                for the menu and so here we are with this Contact view. Thanks for spending time in my application. 
+                Looking forward to feedback!
+            </h4>
         </div>
   </div>
 </template>
@@ -28,33 +36,33 @@ export default{}
 <style>
 div#main{
     display: grid;
-    grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto;
     grid-template-rows: auto 1fr 50px;
     grid-template-areas: 
     "contactform contactform contactform contactform contactform";
-    margin-right: 75%;
+    
     text-align: center;
-    height: 50vh;
-    border-radius: 25px;
-    color: black;
-    font-size: 20px;
+    height: 70vh;
+
 }
 #contactform{
-    grid-area: 2 / 1 / 2 / 6;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-area: auto;
 }
 
-h2{
+h3{
     
-    font-size: 50px;
+    font-size: 20px;
 }
 div#email{
     
     margin-bottom: 20px;
 }
-div#hasAccount{
-    
-    margin-bottom: 20px;
-}
+
 div#question{
     
     margin-bottom: 20px;

@@ -7,23 +7,23 @@
         <button class="searchButton" href="#" v-on:click="searchWeather()"><i class="material-icons">search</i></button>
     </div>    
         
-    <div class="weatherList" >
-            <ul class="weathertextList">
-                <li> Conditions </li>
-                <li> Temperature in C </li>
-                <li> Temperature in F </li>
-                <li> Rain? </li>
-                <li> More Details </li>
-            </ul>
+    <div class="weatherContainer" >
             
-            <ul class="weatherListDetails" v-if="$store.state.forecast" >
-                <li> {{ this.forecastTemperatureF }}</li>
-                <li> {{ this.forecastTemperatureC }} </li>
+            <ul class="weatherList" v-if="$store.state.forecast" >
+                
                 <li> {{ this.forecastWeatherText }} </li>
-                <li> {{ this.forecastHasPrecipitation }} </li>
-                <li> {{ this.forecastLink }} </li>  
+                
+                <li> {{ this.forecastTemperatureF }}&#176;</li>
+                
+                <!-- <li> {{ this.forecastLink}} </li>   -->
+                
+                <!-- <li> {{ this.forecastTemperatureC }} </li> -->
+
+                <!-- <li> {{ this.forecastHasPrecipitation }} </li> -->
+
+                
             </ul>
-            
+        
     </div>
     
         
@@ -79,7 +79,12 @@ import WeatherService from '@/services/WeatherService'
             return this.$store.state.forecast.hasPrecipitation;
         },
         forecastLink(){
-            return this.$store.state.forecast.Link;
+            return this.$store.state.forecast.link;
+        },
+        moreDetails(){
+            let weatherLinkText = 'More Details'
+            let weatherUrl = this.$store.state.forecast.link;
+            return weatherLinkText.link(weatherUrl);
         }
         
     },    
@@ -144,13 +149,25 @@ div#searchPage{
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
-
 }
 
-div#tableDiv{
-    display:grid;
-    grid-area: auto;   
+.weatherContainer{
+    display: grid;
+    margin-bottom:170%;   
 }
+
+.weatherList{
+    list-style: none;
+    padding: none;
+    margin: none;
+    font-size: 175%;
+    
+}
+.li{
+    float: left;
+}
+
+
 
 @media screen and (max-height: 700px) and (min-width: 400px) {
   
