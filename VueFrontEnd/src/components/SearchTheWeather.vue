@@ -1,7 +1,7 @@
 <template>
     <div class="search">
         <input id="searchBar" type="text" v-model="search" placeholder="Enter Postal Code"/>    
-        <button v-on:click="searchWeather()">Search</button>
+        <button v-on:click="searchWeather">Search</button>
 
         <table class="weatherTable">
             <thead>
@@ -21,8 +21,8 @@
                 </tr>
             </tbody>
         </table>
-    
-    
+        
+        
     </div>  
 </template>
 
@@ -57,26 +57,12 @@ import WeatherService from '@/services/WeatherService'
                     console.log('Error', error.message);
                 }
             });
-        },
-        // searchWeather(){
-        //     WeatherService.getWeatherByPostalCode(this.search).then((response) =>{
-        //         this.forecast = response.data;
-        //     }).catch(function (error) {
-        //         if (error.response) {
-        //             //Request made and server responded
-        //             console.log("Response Error");
-        //             console.log(error.response.data);
-        //         } else if (error.request) {
-        //             //Request was made but no response was recieved
-        //             console.log("Request Error");
-        //             console.log(error.request);
-        //         } else {
-        //             //Something happening in setting up the request that triggered an error
-        //             console.log("Misc Error");
-        //             console.log('Error', error.message);
-        //         }
-        //     });
-        // },
+        }
+    },
+    computed: {
+        forecastDetails(){
+            return this.$store.state.activeWeather;
+        }
     },    
         created() {
             this.getWeatherByPostalCode()
