@@ -1,7 +1,7 @@
 <template>
   <div id="main">
       <div id="contactform">
-      <h2>Contact</h2>
+      <h3>Contact</h3>
       <form id="ticket" method="POST" action="https://example.com/api/reservation">
             <div id="email">
                 <label for="e-mail">E-mail:</label>

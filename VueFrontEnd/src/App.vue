@@ -5,14 +5,14 @@
       <nav class="menu">
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>
         <router-link v-bind:to="{ name: 'about' }">About</router-link>
-        <router-link v-bind:to="{ name: 'contact' }">Contact Us</router-link>
+        <router-link v-bind:to="{ name: 'contact' }">Contact</router-link>
       </nav>
     </div>
     <div id="content">
       <router-view/>
     </div>
     <div id="footer">
-      <footer>Weather provided by Accuweather.</footer>
+      <footer>Powered by sour gummy worms and Accuweather.</footer>
     </div>
   </div>
 </template>
@@ -20,8 +20,10 @@
 <style scoped>
 #app {
   display: grid;
+  justify-content: center;
+  align-content: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto 1fr 50px;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header header header header header"
     "app-content app-content app-content app-content app-content"
@@ -32,29 +34,40 @@
   overflow: auto;
   padding: 2px 5px 5px 5px
 }
+
+
 #title{
   grid-area: header;
-  outline-width: 0px;
+  display:grid;
+  justify-content: center;
+  align-items: center;
 }
 
 #mainTitle{
-  justify-content: center;
-  align-items: center;
   color: rgb(36, 36, 36);
-  font-size: 50px;
+  font-size: 40px;
   font-family: 'Nanum Gothic', sans-serif;
   font-weight:bold;
 }
 
 #footer{
   grid-area: app-footer;
+  display: grid;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  font-size: 75%;
   
 }
 
 .menu{
   font-size: 1rem;
   width: 100%;
+  display:grid;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  grid-auto-flow: column;
 }
 
 .menu a {
@@ -74,8 +87,10 @@
 }
 
 div#content {
-  grid-area:auto;
-  padding: 1px 15px;
+  grid-area: app-content;
+  display:grid;
+  justify-content: center;
+  align-items: center;
   height: auto;
   background-size: cover;
   margin-top: 25px;
