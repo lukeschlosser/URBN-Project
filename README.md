@@ -10,12 +10,12 @@ styles. For example if its above 80 degrees the "Bottoms" link will send you to 
 you'll get a link for pants. I think you'll recognize the website used for clothing 👀
 
 This was my first project outside the ones I had at Tech Elevator. I didn't have time for side-
-projects during the bootcamp because of all the learning that was happening plus balacing family 
+projects during the bootcamp because of all the learning that was happening plus balancing family 
 time with a 6 month old. Working on this was a challenging, fun, and growing experience. I know 
 there are countless places where this app could improve and things that I have a vision for to make 
 it better BUT regardless I'm really really proud of what I've built. From knowing next to nothing about 
 coding the beginning of January this year, to building THIS. Feels. So. Good. I'm stoked to come back to 
 this and continue to add/make changes as I grow in my development skills. Thanks URBN for this opportunity 
 and to be challenged in a new way. In the many places I've been applying it is near and far-between when 
-you get to design something from scratch as part of the interview process. Definetly a nice break from 
+you get to design something from scratch as part of the interview process. This was a nice break from 
 the "normal" code assessments I've been doing a lot of.
