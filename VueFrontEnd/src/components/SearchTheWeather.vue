@@ -183,17 +183,6 @@ div#searchPage{
     justify-content: space-evenly;
     height: 60vh;  
     }
-  
-.search {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    }
-
-  .search:hover > .searchBar {
-    width: 150px;
-    padding: 0 6px;
-    }
 
 
 }
@@ -202,8 +191,7 @@ div#searchPage{
 .search:hover > .searchBar {
     width: 150px;
     padding: 0 6px;
-    position:absolute;
-    margin-top: 200%;
+    
 }
 
 }
