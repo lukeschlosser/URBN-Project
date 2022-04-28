@@ -15,11 +15,11 @@
                 
                 <p v-if="this.forecastTemperatureF">{{ this.forecastTemperatureF + '&#176;F' }}</p>
                 
-                <!-- <li> {{ this.forecastLink}} </li>   -->
+                <!-- possibility of adding more weather features future versions -->
                 
-                <!-- <li> {{ this.forecastTemperatureC }} </li> -->
-
-                <!-- <li> {{ this.forecastHasPrecipitation }} </li> -->
+                <!-- <p> {{ this.forecastLink}} </p>   -->               
+                <!-- <p> {{ this.forecastTemperatureC }} </p> -->
+                <!-- <p> {{ this.forecastHasPrecipitation }} </p> -->
 
                 
             </div>
@@ -94,17 +94,17 @@ import WeatherService from '@/services/WeatherService'
 
 <style>
 
-/* div#searchPage{
+div#searchPage{
     display: grid;
     grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
-    grid-template-rows: auto, 1fr, 50px;
+    grid-template-rows: auto, 1fr, auto;
     grid-template-areas: 
         "search search search search search"
         "tableDiv" "tableDiv" "tableDiv" "tableDiv" "tableDiv";
-} */
+} 
 
 .search {
-    position: absolute;
+    position:absolute;
     top: 17%;
     left: 50%;
     transform:  translate(-50%,50%);
@@ -151,20 +151,15 @@ import WeatherService from '@/services/WeatherService'
     width: 0px;
 }
 
-/* .weatherContainer{
-    display: grid;
-    margin-bottom:40%;   
-} */
+
 
 .weatherList{
     display: grid;
-    grid-template-columns: 100px 100px;
+    grid-template-columns: 120px 120px;
     grid-template-rows: auto;
-    margin-left: 10%;
-    /* list-style: none;
-    padding: none;
-    margin: none; */
-    font-size: 175%;
+    margin-left: 18%;
+    font-size: 200%;
+    margin-bottom: 5%;
     
 }
 
@@ -178,17 +173,28 @@ import WeatherService from '@/services/WeatherService'
     "search"
     "tableDiv";
     grid-template-columns: 1fr;
-    
-  }
+    }
 
   #weatherContainer{
-  grid-area: auto;
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  height: 60vh;  
-}
+    grid-area: auto;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    height: 60vh;  
+    }
+  
+.search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    }
+
+  .search:hover > .searchBar {
+    width: 150px;
+    padding: 0 6px;
+    }
+
 
 }
 
@@ -196,6 +202,8 @@ import WeatherService from '@/services/WeatherService'
 .search:hover > .searchBar {
     width: 150px;
     padding: 0 6px;
+    position:absolute;
+    margin-top: 200%;
 }
 
 }

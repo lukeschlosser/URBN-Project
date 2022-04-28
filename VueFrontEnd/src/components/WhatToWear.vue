@@ -1,11 +1,10 @@
 <template>
     <div id="WhatToWearPage">
         <div class="whatToWear" >
-            <!-- <h3>See What Urban Outfitters has to offer for your current weather conditions? </h3>
-            <button>Show me!</button> -->
             
-                <a class="topLink" :href="topWear" target="_blank" v-if="topWear!=0" >URBAN Top Picks</a>
-                <a class="bottomLink" :href="bottomWear" target="_blank" v-if="bottomWear!=0">URBAN Bottom Picks</a>
+            
+                <p v-if="topWear!=0" >URBAN OUTFITTERS<a  :href="topWear" target="_blank" >Tops</a> | or | <a  :href="bottomWear" target="_blank" >Bottoms</a></p>
+                <!-- <p class="bottomLink"></p> -->
             
         </div>
     </div>
@@ -56,6 +55,7 @@ export default {
     display: grid;
     justify-content: center;
     align-items: center;
+
     margin-bottom: 100%;
 }
 

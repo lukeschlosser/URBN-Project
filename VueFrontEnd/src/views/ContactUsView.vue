@@ -1,26 +1,24 @@
 <template>
   <div id="main">
       <div id="contactform">
-      <h3>Contact</h3>
+      <h3 id="contactTitle">Contact</h3>
       <form id="ticket" method="GET" action="https://c.tenor.com/voYdvkuMphgAAAAd/it-just-works.gif">
-            <div id="email">
-                
-                <input id="e-mail" name="e-mail" type="text" placeholder="Email Address" />
-            </div>
             <div id="question">
                 <label for="question">What can we help you with? </label>
-                <input id="question" name="question" type="text-area" placeholder="Don't press 'Submit'" />
+                <input id="questionInput" name="question" type="text-area" placeholder="Don't press 'Submit'" />
             </div>
             <div id="submit">
                 <input type="submit" />
             </div>
         </form>
         </div>
-        <div>
+        <div id="contactBody">
             <h4>
-                This Contact form is not functional at this time. Well...more accurately it's 
+                &emsp;This Contact form is not functional at this time. Well...more accurately it's 
                 not functional in the way you would expect a contact form to be. I like how three nav items look 
-                for the menu and so here we are with this Contact view. Thanks for spending time in my application.
+                for the menu and so here we are with this Contact view. Perhaps in future versions this will become 
+                a working page or perhaps something else entirely. Whatever happens I'm glad you found your way here. 
+                Thanks for spending some time in my application.
             </h4>
         </div>
   </div>
@@ -35,36 +33,61 @@ export default{}
 <style>
 div#main{
     display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr 50px;
-    grid-template-areas: 
-    "contactform contactform contactform contactform contactform";
+    justify-content: left;
+    align-items: left;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "title title title" 
+    "contact contact contact"
+    "paragraph paragraph paragraph";
     
     text-align: center;
     height: 70vh;
-
 }
-#contactform{
+#main{
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-area: auto;
+    
+    
 }
 
-h3{
-    
+#contactform{
+    grid-column-start: 2;
+    background-color: #df8967;
+    box-shadow: insert 0 0 0 200px;
+}
+
+.contactTitle{
     font-size: 20px;
+    grid-column-start: 3;
 }
-div#email{
-    
+#ticket{
+    grid-area: contact;
     margin-bottom: 20px;
 }
 
-div#question{
+#question{
+    margin-bottom: 10px;
     
-    margin-bottom: 20px;
+}
+#questionInput{
+    display: inline-block;
+    opacity: 0.7;
+    border-color: rgb(146, 146, 146);
+    border-style:ridge;
+    
+}
+
+#contactBody{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: left;
+}
+h4{
+    
+    grid-area: paragraph;
 }
 
 </style>
