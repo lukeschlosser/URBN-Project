@@ -9,7 +9,7 @@
       </nav>
     </div>
     <div id="content">
-      <router-view/>
+      <router-view />
     </div>
     <div id="footer">
       <footer>Powered by sour gummy worms and Accuweather.</footer>
@@ -28,42 +28,40 @@
     "header header header header header"
     "app-content app-content app-content app-content app-content"
     "app-footer app-footer app-footer app-footer app-footer";
-  font-family: 'Nanum Gothic', Helvetica, Arial, sans-serif;
+  font-family: "Nanum Gothic", Helvetica, Arial, sans-serif;
   background-color: whitesmoke;
   color: #2c3e50;
   overflow: auto;
-  padding: 2px 5px 5px 5px
+  padding: 2px 5px 5px 5px;
 }
 
-
-#title{
+#title {
   grid-area: header;
-  display:grid;
+  display: grid;
   justify-content: center;
   align-items: center;
 }
 
-#mainTitle{
+#mainTitle {
   color: rgb(36, 36, 36);
   font-size: 40px;
-  font-family: 'Nanum Gothic', sans-serif;
-  font-weight:bold;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
 }
 
-#footer{
+#footer {
   grid-area: app-footer;
   display: grid;
   justify-content: center;
   align-items: center;
   position: relative;
   font-size: 75%;
-  
 }
 
-.menu{
+.menu {
   font-size: 1rem;
   width: 100%;
-  display:grid;
+  display: grid;
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -71,13 +69,13 @@
 }
 
 .menu a {
-  color:#2c3e50;
+  color: #2c3e50;
   padding: 15px;
   text-decoration: none;
 }
 
 .menu a:active {
-  background-color:#2c3e50;
+  background-color: #2c3e50;
   color: black;
 }
 
@@ -88,7 +86,7 @@
 
 div#content {
   grid-area: app-content;
-  display:grid;
+  display: grid;
   justify-content: center;
   align-items: center;
   height: auto;
@@ -96,5 +94,4 @@ div#content {
   margin-top: 25px;
   min-height: 70vh;
 }
-
 </style>
