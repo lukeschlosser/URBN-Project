@@ -4,7 +4,7 @@
 
     <p class="aboutDescription">
       &emsp;Wear-ther is a place that combines the weather and clothing
-      reccommendations for the current conditions! We take reccommendations a
+      recommendations for the current conditions! We take recommendations a
       step further and link directly to the
       <a href="https://www.urbanoutfitters.com/" target="_blank"
         >Urban Outfitters</a
